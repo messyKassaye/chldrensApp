@@ -1,0 +1,324 @@
+/*
+Fade content bs-carousel with hero headers
+Code snippet by maridlcrmn (Follow me on Twitter @maridlcrmn) for Bootsnipp.com
+Image credits: unsplash.com
+*/
+
+/********************************/
+/*       Fade Bs-carousel       */
+/********************************/
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.wrapper {
+    box-sizing: border-box;
+    position: relative;
+    padding-bottom: 1em; /* Height of footer */
+    min-height: 100%;
+}
+
+.fade-carousel {
+    position: relative;
+    height: 50vh;
+}
+.fade-carousel .carousel-inner .item {
+    height: 50vh;
+}
+.fade-carousel .carousel-indicators > li {
+    margin: 0 2px;
+    background-color: #f39c12;
+    border-color: #f39c12;
+    opacity: .7;
+}
+.fade-carousel .carousel-indicators > li.active {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+}
+
+/********************************/
+/*          Hero Headers        */
+/********************************/
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+    -webkit-transform: translate3d(-50%,-50%,0);
+    -moz-transform: translate3d(-50%,-50%,0);
+    -ms-transform: translate3d(-50%,-50%,0);
+    -o-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+}
+.hero h1 {
+    font-size: 6em;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.fade-carousel .carousel-inner .item .hero {
+    opacity: 0;
+    -webkit-transition: 2s all ease-in-out .1s;
+    -moz-transition: 2s all ease-in-out .1s;
+    -ms-transition: 2s all ease-in-out .1s;
+    -o-transition: 2s all ease-in-out .1s;
+    transition: 2s all ease-in-out .1s;
+}
+.fade-carousel .carousel-inner .item.active .hero {
+    opacity: 1;
+    -webkit-transition: 2s all ease-in-out .1s;
+    -moz-transition: 2s all ease-in-out .1s;
+    -ms-transition: 2s all ease-in-out .1s;
+    -o-transition: 2s all ease-in-out .1s;
+    transition: 2s all ease-in-out .1s;
+}
+
+/********************************/
+/*            Overlay           */
+/********************************/
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-decoration-color: #242424;
+    opacity: .2;
+}
+
+/********************************/
+/*          Custom Buttons      */
+/********************************/
+.btn.btn-lg {padding: 10px 40px;}
+.btn.btn-hero,
+.btn.btn-hero:hover,
+.btn.btn-hero:focus {
+    color: #f5f5f5;
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+    outline: none;
+    margin: 20px auto;
+}
+
+/********************************/
+/*       Slides backgrounds     */
+/********************************/
+.fade-carousel .slides .slide-1,
+.fade-carousel .slides .slide-2,
+.fade-carousel .slides .slide-3 {
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.fade-carousel .slides .slide-1 {
+    background-image: url(http://localhost:8080/Children/resources/images/kenay.jpg);
+}
+.fade-carousel .slides .slide-2 {
+    background-image: url(http://localhost:8080/Children/resources/images/all.jpg);
+}
+.fade-carousel .slides .slide-3 {
+    background-image: url(http://localhost:8080/Children/resources/images/circle-game.jpg);
+}
+
+/********************************/
+/*          Media Queries       */
+/********************************/
+@media screen and (min-width: 980px){
+    .hero { width: 980px; }
+}
+@media screen and (max-width: 640px){
+    .hero h1 { font-size: 4em; }
+}
+
+.nav{
+    color: #f5f5f5;
+    background-color: #1abc9c !important;
+    border-color: #1abc9c;
+}
+
+.navbar-brand{
+    color: white !important;
+}
+.navbar-brand:hover{
+    color: black !important;
+}
+
+.collapse>ul>li>a{
+    color:  white !important;
+}
+.collapse>ul>li>a:hover{
+    color:  black !important;
+}
+.bg-overlay-1{
+    background-image: url(http://localhost:8080/Children/resources/images/school.jpeg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 300px;
+    background-color: black;
+    background-cover:cover;
+    position: relative;
+    width: 100%;
+
+}
+.bg-overlay-2{
+    background-image: url(http://localhost:8080/Children/resources/images/hope.jpeg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 300px;
+    background-color: black;
+    background-cover:cover;
+    position: relative;
+    width: 100%;
+
+}
+.bg-overlay-3{
+    background-image: url(http://localhost:8080/Children/resources/images/family.jpeg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 300px;
+    background-color: black;
+    background-cover:cover;
+    position: relative;
+    width: 100%;
+
+}
+.my-panel>.panel-heading{
+    color: #f5f5f5;
+    background-color: #1abc9c !important;
+    border-color: #1abc9c !important;
+}
+.my-panel{
+    border-color: #1abc9c !important;
+}
+.panel-body{
+    padding: 5px;
+}
+
+#testimonial{
+    margin-top: 250px;
+    color: white;
+    background-color: #1abc9c;
+}
+.child-name{
+    color: #009976;
+    font-family: "AvenirLT-Black";
+    font-size: 16pt;
+    line-height: 34px;
+    margin-top: 15px;
+}
+.custom-hr{
+    border: 0;
+    clear:both;
+    display:block;
+    width: 96%;
+    background-color:#3c763d;
+    height: 1px;
+}
+.what-we-do{
+    font-family: "martellight";
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: .5px;
+    line-height: 1.8;
+    margin: 0 0 30px;
+}
+.my-btn{
+    background-color: #009976;
+    border-color: #009976;
+}
+
+.white-btn{
+    background-color: transparent;
+    color: #1abc9c;
+    border: 0px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-right: -20px;
+}
+.white-btn:hover,active{
+    background-color: transparent;
+    color: #009976;
+    text-align: left;
+    border: 0px;
+    text-transform: uppercase;
+    margin-top: 20px;
+
+}
+.white-btn:focus{
+    background-color: transparent;
+    color: #009976;
+    text-align: left;
+    border: 0px;
+    text-transform: uppercase;
+    margin-top: 20px;
+
+}
+.white-btn:active{
+    background-color: transparent;
+    color: #009976;
+    text-align: left;
+    border: 0px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    padding: 20px;
+
+}
+.hr-rule{
+    border: 0;
+    height: 1px;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+.main-p{
+    letter-spacing: .5px;
+    line-height: 1.8;
+    font-size: 17px;
+}
+.custom-h2{
+    color: #901f61;
+    font-size: 30px;
+    line-height: calc(30px + 5px);
+    font-family: "cihandregular";
+}
+.sponsor-div{
+    width: 100%;
+    height: 300px;
+
+}
+.centered-overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.details{
+    margin-top: -40px;
+    margin-left: 20px;
+}
+.pa{
+    letter-spacing: .5px;
+    line-height: 1.8;
+    font-size: 16px; 
+    margin-bottom: 5px;
+}
+.my-div{
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 100%;
+}
