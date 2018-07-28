@@ -13,6 +13,6 @@
     <link type="text/css" rel="stylesheet" href="http://localhost:8080/children/resources/css/cards.css">
     <link type="text/css" rel="stylesheet" href="http://localhost:8080/children/resources/css/tabs.css">
     <link type="text/css" rel="stylesheet" href="http://localhost:8080/children/resources/css/date-picker.css">
-    
+    <link rel="icon" type="image/x-icon" href="resources/images/favicon.ico" >
 
 </head>

@@ -14,6 +14,7 @@
     <link type="text/css" rel="stylesheet" href="resources/css/my-style.css">
     <link type="text/css" rel="stylesheet" href="resources/css/footer.css">
     <link type="text/css" rel="stylesheet" href="http://localhost:8080/children/resources/css/cards.css">
+      <link rel="icon" type="image/x-icon" href="resources/images/favicon.ico" >
     
 </head>
 <body style="background-color: #f6f4f3;margin: 0px">

@@ -10,7 +10,7 @@ package helpers;
  * @author meseret
  */
 public class FilePaths {
-    public static final String IMAGE_PATH="/home/meseret/NetBeansProjects/children/web/resources/images";
+    public static final String IMAGE_PATH="/home/meseret/ChildrenFinal/children/web/resources/images";
     public static final String IMAGE_URL="http://localhost:8080/children/resources/images/";
     public FilePaths() {
     }

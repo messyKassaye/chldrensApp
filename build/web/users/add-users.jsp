@@ -32,7 +32,7 @@
 
                                             <h3 class="text-success"><%=session.getAttribute("userAdded") %></h3>
                                             <%}%>
-                                            <form action="RegisterUsers" method="post">
+                                            <form action="RegisterUsers" method="post">             
                                                 <div class="form-group">
                                                     <label for="fullName">Full Name:</label>
                                                     <input class="form-control" placeholder="Full Name" id="fullName" name="fullName" required="">

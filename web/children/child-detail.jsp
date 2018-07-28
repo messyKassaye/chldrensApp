@@ -4,6 +4,8 @@
     Author     : meseret
 --%>
 
+<%@page import="models.Family"%>
+<%@page import="ORM.Families"%>
 <%@page import="models.Hobby"%>
 <%@page import="ORM.Hobbies"%>
 <%@page import="models.ChildrenHouse"%>
@@ -61,6 +63,9 @@
 
                                 ChildrenHouses house = new ChildrenHouses(connection);
                                 ArrayList<ChildrenHouse> house_data = house.show("" + id);
+
+                                Families families = new Families(connection);
+                                ArrayList<Family> family_data = families.index();
                             %>
                             <div class="col-md-2 col-lg-2 col-sm-12">
                                 <div class="card bg-light">
@@ -120,13 +125,13 @@
                                             %>
                                             <li>
                                                 <a href="#about-house" data-toggle="tab">
-                                                    About House
+                                                    About My House
                                                 </a>
                                             </li>
                                             <%}%>
                                             <li>
                                                 <a href="#donate" data-toggle="tab">
-                                                    Donate
+                                                    Donators
                                                 </a>
                                             </li>
                                             <li>
@@ -339,10 +344,61 @@
 
                                             </div>
                                             <!-- end of hobby started -->
-                                            
+
                                             <!-- family starts here -->
                                             <div class="tab-pane" id="family">
-                                                Family
+                                                <%
+
+                                                    if (family_data.size() > 0) {
+                                                %>
+                                                <div class="container">
+                                                    <div class="row">
+                                                            <h3 class="text-info">My Families</h3>
+                                                            <%
+                                                                for (int i = 0; i < family_data.size(); i++) {
+                                                            %>
+                                                            <p><strong><%=family_data.get(i).getRelation()%>:</strong><%=family_data.get(i).getFirst_name() + " " + family_data.get(i).getLast_name()%></p>
+                                                            <%}%>
+                                                            <button class="pull-left btn btn-primary btn-sm" style="margin-top: 30px;">Add Family</button>
+                                                    </div>
+                                                </div>
+                                                <%} else {%>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6 col-sm-12">
+                                                            <h3 class="text-success">Add her family</h3>
+                                                            <form action="RegistorFamily" method="post">
+                                                                <div class="form-group" style="display: none;">
+                                                                    <label for="firstName">First Name:</label> 
+                                                                    <input class="form-control" placeholder="First Name" name="id" id="id" value="<%=id%>" style="display: none;">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="firstName">First Name:</label> 
+                                                                    <input class="form-control" placeholder="First Name" name="firstName" id="firstName">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="lastName">Last Name:</label> 
+                                                                    <input class="form-control" placeholder="Last Name" name="lastName" id="lastName">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="lastName">Relation Type:</label> 
+                                                                    <select class="form-control" name="relation" id="relation">
+                                                                        <option>Father</option>
+                                                                        <option>Mother</option>
+                                                                        <option>Aunt</option>
+                                                                        <option>Grand Pa</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="submit" value="Register" class="btn btn-primary form-control">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <%}%>
                                             </div>
 
 
@@ -363,10 +419,10 @@
                                                 <%
                                                     if (sibling_data.get(i).getGender().endsWith("Brother")) {
                                                 %>
-                                                <h3>Brothers</h3>
+                                                <h3 class="text-info">Brothers</h3>
                                                 <p><%=sibling_data.get(i).getFirstName() + " " + sibling_data.get(i).getLastName()%></p>
                                                 <%} else {%>
-                                                <h3>Sisters</h3>
+                                                <h3 class="text-info">Sisters</h3>
                                                 <p><%=sibling_data.get(i).getFirstName() + " " + sibling_data.get(i).getLastName()%></p>
                                                 <%}%>
 
@@ -377,45 +433,44 @@
                                                 <h3 class="text-info">Add brother or sister of <%=children.getFirstName() + " " + children.getLastName()%> </h3>
                                                 <div class="container">
                                                     <div class="row">
-                                                        <div class="col-md-4 col-lg-4 col-sm-12">
-                                                            <div class="">
-                                                                <form action="SiblingServlet" method="post">
-                                                                    <div class="form-group" style="display: none">
-                                                                        <label for="country">hobby</label>
-                                                                        <input class="form-control" name="id" id="country" value="<%=id%>">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="name">First Name:</label>
-                                                                        <input class="form-control" name="firstName" id="name" placeholder="First Name" >
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="lastName">Last Name:</label>
-                                                                        <input class="form-control" name="lastName" id="lastName" placeholder="Last Name" >
-                                                                    </div>
+                                                        <div class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6 col-sm-12">
 
-                                                                    <div class="form-group">
-                                                                        <label for="country">Relation Type</label>
-                                                                        <select class="form-control" id="country" name="relation">
-                                                                            <option>Brother</option>
-                                                                            <option>Sister</option>
-                                                                        </select>
-                                                                    </div>
+                                                            <form action="SiblingServlet" method="post">
+                                                                <div class="form-group" style="display: none">
+                                                                    <label for="country">hobby</label>
+                                                                    <input class="form-control" name="id" id="country" value="<%=id%>">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="name">First Name:</label>
+                                                                    <input class="form-control" name="firstName" id="name" placeholder="First Name" >
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="lastName">Last Name:</label>
+                                                                    <input class="form-control" name="lastName" id="lastName" placeholder="Last Name" >
+                                                                </div>
 
-                                                                    <div class="form-group">
-                                                                        <label for="birthDate">Birth date</label>
-                                                                        <div class='input-group date' id='datetimepicker1'>
-                                                                            <input type='text' class="form-control" name="birthDate" id="birthDate" />
-                                                                            <span class="input-group-addon">
-                                                                                <span class="glyphicon glyphicon-calendar"></span>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
+                                                                <div class="form-group">
+                                                                    <label for="country">Relation Type</label>
+                                                                    <select class="form-control" id="country" name="relation">
+                                                                        <option>Brother</option>
+                                                                        <option>Sister</option>
+                                                                    </select>
+                                                                </div>
 
-                                                                    <div class="form-group">
-                                                                        <input class="form-control btn btn-primary" value="Add" type="submit" >
+                                                                <div class="form-group">
+                                                                    <label for="birthDate">Birth date</label>
+                                                                    <div class='input-group date' id='datetimepicker1'>
+                                                                        <input type='text' class="form-control" name="birthDate" id="birthDate" />
+                                                                        <span class="input-group-addon">
+                                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                                        </span>
                                                                     </div>
-                                                                </form>
-                                                            </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <input class="form-control btn btn-primary" value="Add" type="submit" >
+                                                                </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>

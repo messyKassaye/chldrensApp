@@ -8,7 +8,12 @@ package ORM;
 import helpers.AgeCalculator;
 import java.io.IOException;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletResponse;
@@ -59,17 +64,19 @@ public class Childrens {
 
     }
 
-    public int create(Children child, HttpServletResponse response) throws IOException {
-        String query = "insert into childrens(id,first_name,last_name,gender,birth_date,live_with,speaks,school,family_income,history,sponsor_saying,active) "
-                + "values(?,?,?,?,?,?,?,?,?,?,?,?)";
+    public int create(Children child, HttpServletResponse response) throws IOException, ParseException {
+        String query = "insert into childrens(id,first_name,last_name,gender,birth_date,live_with,speaks,school,family_income,history,sponsor_saying,active,registration_date) "
+                + "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         int lastInsertedId = 0;
         try {
+            DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            Date date = format.parse(child.getAge());
             ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, 0);
             ps.setString(2, child.getFirstName());
             ps.setString(3, child.getLastName());
             ps.setString(4, child.getGender());
-            ps.setString(5, child.getAge());
+            ps.setString(5, String.valueOf(AgeCalculator.getAge(date)));
             ps.setString(6, child.getLivesWith());
             ps.setString(7, child.getSpeaks());
             ps.setString(8, "");
@@ -77,6 +84,12 @@ public class Childrens {
             ps.setString(10, "");
             ps.setString(11, "");
             ps.setInt(12, 0);
+            Calendar calendar=Calendar.getInstance();
+            int year= calendar.get(Calendar.YEAR);
+            int month=calendar.get(Calendar.MONTH);
+            int dayOfMonth=calendar.get(Calendar.DAY_OF_MONTH);
+            String registrationDate=dayOfMonth+"/"+month+"/"+year;
+            ps.setString(13, registrationDate);
             int result = ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             while (rs.next()) {
@@ -85,6 +98,8 @@ public class Childrens {
             return lastInsertedId;
         } catch (SQLException ex) {
             Logger.getLogger(Childrens.class.getName()).log(Level.SEVERE, null, ex);
+            
+            response.getWriter().print(ex.getMessage());
             return lastInsertedId;
         }
     }
@@ -126,8 +141,8 @@ public class Childrens {
             query = "select * from childrens c join children_profiles p on c.id=p.foreign_id  where c.active=0 and c.school='yes'";
         } else if (type.equals("family")) {
             query = "select * from childrens c join children_profiles p on c.id=p.foreign_id  where c.active=0 and c.live_with='family'";
-        } else if (type.equals("need-sponsor")) {
-
+        } else if (type.equals("all")) {
+           query="select * from childrens c join children_profiles p on c.id=p.foreign_id  where c.active=0";
         }
 
         try {

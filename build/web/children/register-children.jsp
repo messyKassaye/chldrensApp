@@ -103,28 +103,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-lg-3 hidden-sm">
-                                <div class="card bg-white text-muted">
-                                    <div class="card-header">
-                                        <h4 class="text-info">Registered Children</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="list-group">
-                                            <%
-                                                for (int i = 0; i < children.size(); i++) {
-                                            %>
-                                            <a class="list-group-item list-group-item-action" href="details?id=<%=children.get(i).getId()%>" style="border: none !important;font-size: 17px;">
-                                                <div class="media">
-                                                    <div class="media-body">
-                                                        <img class="img-circle" width="50" height="50" src="<%=children.get(i).getProfile_pic()%>" alt="" style="margin-right: 5px;"><%=children.get(i).getFirstName() + " " + children.get(i).getFirstName()%>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <%}%>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

@@ -51,6 +51,14 @@ public class Routing implements Filter {
             request.getRequestDispatcher("roles/add-roles.jsp").forward(request, response);
         } else if (url.endsWith("ShowRoles")) {
             request.getRequestDispatcher("roles/show-roles.jsp").forward(request, response);
+        } else if (url.endsWith("AddDepartments")) {
+            request.getRequestDispatcher("departments/add-departments.jsp").forward(request, response);
+        } else if (url.endsWith("ShowDepartments")) {
+            request.getRequestDispatcher("departments/show-departments.jsp").forward(request, response);
+        } else if (url.endsWith("AddTasks")) {
+            request.getRequestDispatcher("tasks/add-tasks.jsp").forward(request, response);
+        } else if (url.endsWith("ShowTasks")) {
+            request.getRequestDispatcher("tasks/show-tasks.jsp").forward(request, response);
         } else {
             chain.doFilter(req, resp);
         }

@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
             if (role_id == 1) {
                 response.sendRedirect("adminProfile.jsp");
             } else if (role_id == 2) {
-                response.sendRedirect("/profile/dataCollector/collcetorProfile.jsp");
+                response.sendRedirect("deparment-head-dashboard.jsp");
             }
         } else {
             session.setAttribute("unknownUser", "Sorry, may be you are using incorrect user name or password");
@@ -49,6 +49,6 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
     }
 }

@@ -36,9 +36,7 @@
 
                                                 <div class="form-group">
                                                     <label for="resp">Responsibility:</label>
-                                                    <textarea class="form-control" placeholder="Responsibilty......." id="resp" name="resp" rows="10"  cols="10">
-                                                        
-                                                    </textarea>
+                                                    <textarea class="form-control" placeholder="Responsibilty......." id="resp" name="resp" rows="10"  cols="10"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <input class="form-control btn btn-primary" type="submit" value="Register User">

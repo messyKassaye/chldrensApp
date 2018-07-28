@@ -104,4 +104,24 @@ public class Users {
     public void delete(String email){
         
     }
+    
+    public ArrayList<User> department(){
+        String query="select * from users where role_id=2";
+        ArrayList<User> users=new ArrayList<>();
+        try {
+            ps= connection.prepareStatement(query);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                User user=new User();
+                user.setId(rs.getInt("id"));
+                user.setFullName(rs.getString("full_name"));
+                user.setEmail(rs.getString("email"));
+                users.add(user);
+            }
+            return users;
+        } catch (SQLException ex) {
+            Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 }

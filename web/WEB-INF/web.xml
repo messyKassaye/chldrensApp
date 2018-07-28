@@ -97,6 +97,10 @@
         <url-pattern>/SponsorAchild</url-pattern>
     </servlet-mapping>
     
+    <context-param>
+        <param-name>image-path</param-name>
+        <param-value></param-value>
+    </context-param>
     
     <context-param>
         <param-name>ImagePath</param-name>

@@ -48,12 +48,12 @@
             <li>
                 <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-child"></i> Children<i class="fa fa-fw fa-angle-down pull-right"></i></a>
                 <ul id="submenu-1" class="collapse submenus">
-                    <li><a href="childrenRegistration"><i class="fa fa-female"></i>   Register Children</a></li>
-                    <li><a href="showChildren?req=male"><i class="fa fa-female"></i>   Boy</a></li>
+                    <li><a href="childrenRegistration"><i class="fa fa-plus"></i>   Register Children</a></li>
+                    <li><a href="showChildren?req=male"><i class="fa fa-user"></i>   Boy</a></li>
                     <li><a href="showChildren?req=female"><i class="fa fa-female"></i>  Female</a></li>
                     <li><a href="showChildren?req=school-yes"><i class="fa fa-university"></i> at school</a></li>
-                    <li><a href="showChildren?req=family"><i class="fa fa-user-plus"></i> with family</a></li>
-                    <li><a href="showChildren?req=need-sponsor"><i class="fa fa-money"></i> most need sponsor</a></li>
+                    <li><a href="showChildren?req=family"><i class="fa fa-users"></i> with family</a></li>
+                    <li><a href="showChildren?req=all"><i class="fa fa-eye"></i> Show all</a></li>
 
                 </ul>
             </li>
@@ -71,6 +71,24 @@
                     <li><a href="ShowUsers"><i class="fa fa-meanpath"></i>  Show Users</a></li>
                 </ul>
             </li>
+            
+             <li>
+                <a href="#" data-toggle="collapse" data-target="#submenu-d"><i class="fa fa-users "></i>  Departments <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                <ul id="submenu-d" class="collapse submenus">
+                    <li><a href="AddDepartments"><i class="fa fa-database"></i>  Add departments</a></li>
+                    <li><a href="ShowDepartments"><i class="fa fa-meanpath"></i>  Show Departments</a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="#" data-toggle="collapse" data-target="#submenu-t"><i class="fa fa-users "></i>  Tasks <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                <ul id="submenu-t" class="collapse submenus">
+                    <li><a href="AddTasks"><i class="fa fa-database"></i>  Add task</a></li>
+                    <li><a href="ShowTasks"><i class="fa fa-meanpath"></i>  Show tasks</a></li>
+                </ul>
+            </li>
+            
+            
             <li>
                 <a href="#" data-toggle="collapse" data-target="#submenu-4"><i class="fa fa-tasks"></i> What we do <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                 <ul id="submenu-4" class="collapse submenus">
@@ -112,14 +130,6 @@
                 <ul id="submenu-9" class="collapse submenus">
                     <li><a href="#"><i class="fa fa-plus"></i> add new one</a></li>
                     <li><a href="#"><i class="fa fa-eye"></i> Show previous</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" data-toggle="collapse" data-target="#submenu-10"><i class="fa fa-medium"> </i> Social media <i class="fa fa-fw fa-angle-down pull-right"></i></a>
-                <ul id="submenu-10" class="collapse submenus">
-                    <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i> twitter</a></li>
-                    <li><a href="#"><i class="fa fa-telegram"></i> Telegram</a></li>
                 </ul>
             </li>
             <li>

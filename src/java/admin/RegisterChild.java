@@ -67,9 +67,9 @@ public class RegisterChild extends HttpServlet {
         }
         File file = null;
         Connection connection = (Connection) getServletContext().getAttribute("DbConnection");
-        Childrens db=new Childrens(connection);
+        Childrens db = new Childrens(connection);
         Children children = new Children();
-        FileItem imageFileItem=null;
+        FileItem imageFileItem = null;
         try {
             List<FileItem> fileItemsList = uploader.parseRequest(request);
             Iterator fileItemsIterator = fileItemsList.iterator();
@@ -78,7 +78,7 @@ public class RegisterChild extends HttpServlet {
                 FileItem fileItem = (FileItem) fileItemsIterator.next();
                 if (fileItem.isFormField()) {
                     String fieldName = fileItem.getFieldName();
-                    String fieldValue= fileItem.getString();
+                    String fieldValue = fileItem.getString();
                     if (fieldName.equals("childFirstName")) {
                         children.setFirstName(fieldValue);
                     } else if (fieldName.equals("childLastName")) {
@@ -88,30 +88,31 @@ public class RegisterChild extends HttpServlet {
                     } else if (fieldName.equals("gender")) {
                         children.setGender(fieldValue);
                     } else if (fieldName.equals("birthDate")) {
-                        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(fieldValue); 
-                        children.setAge(String.valueOf(AgeCalculator.getAge(date1)));
+                        children.setAge(fieldValue);
                     } else if (fieldName.equals("livesWith")) {
                         children.setLivesWith(fieldValue);
                     } else if (fieldName.equals("speaks")) {
                         children.setSpeaks(fieldValue);
                     }
                 } else {
-                    imageFileItem=fileItem;
-                    Calendar ca= Calendar.getInstance();
-                    Date salt=ca.getTime();
-                    file = new File(FilePaths.IMAGE_PATH+ File.separator + salt.toString()+fileItem.getName());
+                    imageFileItem = fileItem;
+                    Calendar ca = Calendar.getInstance();
+                    Date salt = ca.getTime();
+                    String relativeWebPath = "/resources/images";
+                    String absoluteDiskPath = getServletContext().getRealPath(relativeWebPath);
+                    file = new File(absoluteDiskPath + File.separator + salt.toString() + fileItem.getName());
                 }
 
             }
-            int result=db.create(children, response);
-            if(result>0){
-                ChildrenProfiles coverDb=new ChildrenProfiles(connection);
-                ChildrenProfile cover= new ChildrenProfile(result, FilePaths.IMAGE_URL+file.getName());
-               int coverResult= coverDb.create(cover);
-               imageFileItem.write(file);
-                HttpSession sess=request.getSession(false);
+            int result = db.create(children, response);
+            if (result > 0) {
+                ChildrenProfiles coverDb = new ChildrenProfiles(connection);
+                ChildrenProfile cover = new ChildrenProfile(result, FilePaths.IMAGE_URL + file.getName());
+                int coverResult = coverDb.create(cover);
+                imageFileItem.write(file);
+                HttpSession sess = request.getSession(false);
                 sess.setAttribute("message", "Child Registerd Successfully");
-               response.sendRedirect("childrenRegistration");
+                response.sendRedirect("childrenRegistration");
             }
         } catch (FileUploadException e) {
             response.getWriter().print(e.getMessage());

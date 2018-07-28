@@ -29,6 +29,12 @@ import models.User;
 public class RegisterUsers extends HttpServlet {
 
     @Override
+    public void init() throws ServletException {
+        super.init(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 

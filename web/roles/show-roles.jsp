@@ -32,7 +32,7 @@
 
                                     <thead>
 
-                                    <th>#</th>
+                                    <th>Id No</th>
                                     <th>Role Name</th>
                                     <th>Responsibility</th>
                                     <th style="text-align: center">Action</th>
@@ -44,7 +44,7 @@
                                         %>
 
                                         <tr>
-                                            <td><%=i%></td>
+                                            <td><%=role_data.get(i).getId() %></td>
                                             <td><%=role_data.get(i).getName() %></td>
                                             <td><%=role_data.get(i).getResponsibility() %></td>
                                             <td class="text-center">
